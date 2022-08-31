@@ -1,38 +1,24 @@
+@import '~antd/dist/antd.css';
+
 .App {
-  text-align: center;
+  margin-top: 3rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App img{
+  
+  width: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App h1{
+  margin-bottom: 0;
+  color: purple;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.title-container{
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 15px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  margin-bottom: 3rem;
 }
