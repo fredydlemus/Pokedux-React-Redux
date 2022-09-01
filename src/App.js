@@ -3,15 +3,18 @@ import PokemonList from "./components/PokemonList";
 import { Col } from "antd";
 import "./App.css";
 import logo from "./statics/pokeball.png";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getPokemons } from "./api";
-import { connect } from "react-redux";
-import { setPokemons as setPokemonsAction } from "./actions";
+import { setPokemons } from "./actions";
+import { useSelector, useDispatch } from "react-redux";
 
-function App({ pokemons, setPokemons }) {
+function App() {
+  const pokemons = useSelector((state) => state.pokemons);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getPokemons()
-      .then((pokemons) => setPokemons(pokemons))
+      .then((pokemons) => dispatch(setPokemons(pokemons)))
       .catch((error) => {
         console.error(error);
       });
@@ -22,7 +25,7 @@ function App({ pokemons, setPokemons }) {
       <Col>
         <div className="title-container">
           <h1>Pokedux</h1>
-          <img src={logo} alt="logo" />
+          <img className="App-logo" src={logo} alt="logo" />
         </div>
       </Col>
       <Col span={8} offset={8}>
@@ -33,12 +36,4 @@ function App({ pokemons, setPokemons }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  pokemons: state.pokemons,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setPokemons: (value) => dispatch(setPokemonsAction(value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
