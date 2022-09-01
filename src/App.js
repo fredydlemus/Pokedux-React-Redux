@@ -4,8 +4,8 @@ import { Col } from "antd";
 import "./App.css";
 import logo from "./statics/pokeball.png";
 import { useEffect } from "react";
-import { getPokemons } from "./api";
-import { setPokemons } from "./actions";
+import { getPokemons, getPokemonDetails } from "./api";
+import { getPokemonsWithDetails } from "./actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     getPokemons()
-      .then((pokemons) => dispatch(setPokemons(pokemons)))
+      .then((pokemons) => dispatch(getPokemonsWithDetails(pokemons)))
       .catch((error) => {
         console.error(error);
       });
