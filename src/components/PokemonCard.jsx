@@ -5,12 +5,13 @@ import { useDispatch } from "react-redux";
 import { setFavorite } from "../actions";
 
 
-const PokemonCard = ({ name, image, types, id }) => {
+const PokemonCard = ({ name, image, types, id, favorite }) => {
 
     const dispatch = useDispatch();
     const typeString = types.map(item => item.type.name).join(', ');
 
     const handleOnClick = () => {
+        console.log('click');
         dispatch(setFavorite({ pokemonId: id }));
     }
 
@@ -21,7 +22,7 @@ const PokemonCard = ({ name, image, types, id }) => {
         cover={<img src={image}
             alt={name}
         />}
-        extra={<StarButton isFavorite={true} action={handleOnClick} />}
+        extra={<StarButton isFavorite={favorite} action={handleOnClick} />}
     >
 
         <Meta description={typeString} />

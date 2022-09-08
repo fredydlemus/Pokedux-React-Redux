@@ -3,6 +3,8 @@ import "./PokemonList.css";
 
 const PokemonList = ({ pokemons }) => {
 
+
+
     return <div className="pokemonList">
         {pokemons.map((pokemon) => {
             return <PokemonCard
@@ -10,7 +12,10 @@ const PokemonList = ({ pokemons }) => {
                 key={pokemon.name}
                 image={pokemon.sprites.front_default}
                 types={pokemon.types}
-                id={pokemon.id} />
+                id={pokemon.id}
+                favorite={pokemon.favorite}
+            />
+
         })}
     </div>
 }

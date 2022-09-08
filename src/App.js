@@ -9,7 +9,8 @@ import { getPokemonsWithDetails, setLoading } from "./actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const { pokemons, loading } = useSelector((state) => state);
+  const pokemons = useSelector((state) => state.get("pokemons"));
+  const loading = useSelector((state) => state.get("loading"));
   const dispatch = useDispatch();
 
   useEffect(() => {
