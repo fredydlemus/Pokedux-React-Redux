@@ -11,7 +11,7 @@ const PokemonCard = ({ name, image, types, id, favorite }) => {
     const typeString = types.map(item => item.type.name).join(', ');
 
     const handleOnClick = () => {
-        console.log('click');
+
         dispatch(setFavorite({ pokemonId: id }));
     }
 
