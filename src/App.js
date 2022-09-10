@@ -6,11 +6,14 @@ import logo from "./statics/pokeball.png";
 import { useEffect } from "react";
 import { getPokemons } from "./api";
 import { getPokemonsWithDetails, setLoading } from "./actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { getIn } from "immutable";
 
 function App() {
-  const pokemons = useSelector((state) => state.get("pokemons"));
-  const loading = useSelector((state) => state.get("loading"));
+  const pokemons = useSelector((state) =>
+    getIn(state, ["data", "pokemons"], shallowEqual)
+  );
+  const loading = useSelector((state) => getIn(state, ["ui", "loading"]));
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,9 +1,8 @@
-import { SET_POKEMONS, SET_LOADING, SET_FAVORITE } from "../actions/types";
+import { SET_POKEMONS, SET_FAVORITE } from "../actions/types";
 import { fromJS, setIn, getIn } from "immutable";
 
 const initialState = fromJS({
   pokemons: [],
-  loading: false,
 });
 
 export const pokemonsReducer = (state = initialState, action) => {
@@ -29,8 +28,6 @@ export const pokemonsReducer = (state = initialState, action) => {
         !isFavorite
       );
 
-    case SET_LOADING:
-      return setIn(state, ["loading"], action.payload);
     default:
       return state;
   }
