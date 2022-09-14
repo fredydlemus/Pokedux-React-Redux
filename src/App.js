@@ -8,7 +8,10 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { fetchPokemonWithDetails } from "./slices/dataSlice";
 
 function App() {
-  const { pokemons } = useSelector((state) => state.data, shallowEqual);
+  const { pokemons, pokemonSearcherList } = useSelector(
+    (state) => state.data,
+    shallowEqual
+  );
   const { loading } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
@@ -33,7 +36,11 @@ function App() {
           <Spin spinning size="large" />
         </Col>
       ) : (
-        <PokemonList pokemons={pokemons} />
+        <PokemonList
+          pokemons={
+            pokemonSearcherList.length > 0 ? pokemonSearcherList : pokemons
+          }
+        />
       )}
     </div>
   );
